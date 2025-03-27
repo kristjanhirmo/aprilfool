@@ -60,17 +60,11 @@
             margin-top: 30px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        img {
-            width: 100%;
-            max-width: 400px;
-            margin: 20px auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .footer {
-            margin-top: 30px;
-            font-style: italic;
-            color: #6a6a6a;
+        .loading-dots {
+            font-size: 24px;
+            color: #b83280;
+            margin-top: 10px;
+            animation: blink 1.2s steps(5, start) infinite;
         }
         @keyframes fadeSlideIn {
             0% {
@@ -84,7 +78,6 @@
         }
         .animate {
             animation: fadeSlideIn 1s ease forwards;
-            animation-delay: 1.2s;
         }
     </style>
 </head>
@@ -99,6 +92,7 @@
 
     <div class="intro-text" id="intro">
         <h2>Me lähme</h2>
+        <div class="loading-dots" id="dots">..........</div>
     </div>
 
     <div class="full-message" id="message">
@@ -117,10 +111,11 @@
         function showMessage() {
             document.getElementById("intro").style.display = "block";
             setTimeout(function() {
+                document.getElementById("dots").style.display = "none";
                 var msg = document.getElementById("message");
                 msg.style.display = "block";
                 msg.classList.add("animate");
-            }, 1000);
+            }, 7000); // 7 sekundit
         }
     </script>
 </body>
