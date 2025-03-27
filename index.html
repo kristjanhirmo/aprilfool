@@ -61,10 +61,36 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         .loading-dots {
-            font-size: 24px;
+            font-size: 28px;
             color: #b83280;
             margin-top: 10px;
-            animation: blink 1.2s steps(5, start) infinite;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+        .loading-dots::after {
+            content: '';
+            display: inline-block;
+            animation: dots 1.2s steps(4, end) infinite;
+        }
+        @keyframes dots {
+            0% { content: ''; }
+            25% { content: '.'; }
+            50% { content: '..'; }
+            75% { content: '...'; }
+            100% { content: ''; }
+        }
+        img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .footer {
+            margin-top: 30px;
+            font-style: italic;
+            color: #6a6a6a;
         }
         @keyframes fadeSlideIn {
             0% {
@@ -92,7 +118,7 @@
 
     <div class="intro-text" id="intro">
         <h2>Me lähme</h2>
-        <div class="loading-dots" id="dots">..........</div>
+        <div class="loading-dots" id="dots">Laadimine<span class="dots"></span></div>
     </div>
 
     <div class="full-message" id="message">
