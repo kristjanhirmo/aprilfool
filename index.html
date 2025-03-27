@@ -39,14 +39,6 @@
             animation: heartbeat 1.5s infinite;
             display: inline-block;
         }
-        .hidden-message {
-            display: none;
-            background-color: #fff0f5;
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
         .reveal-btn {
             background-color: #ff66a6;
             color: white;
@@ -60,6 +52,14 @@
         .reveal-btn:hover {
             background-color: #e05594;
         }
+        .intro-text, .full-message {
+            display: none;
+            background-color: #fff0f5;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
         img {
             width: 100%;
             max-width: 400px;
@@ -72,6 +72,20 @@
             font-style: italic;
             color: #6a6a6a;
         }
+        @keyframes fadeSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate {
+            animation: fadeSlideIn 1s ease forwards;
+            animation-delay: 1.2s;
+        }
     </style>
 </head>
 <body>
@@ -83,8 +97,12 @@
     <p>Mul on sulle üks väike plaan. Klõpsa allolevale nupule ja saa teada…</p>
     <button class="reveal-btn" onclick="showMessage()">VAJUTA JULGESTI</button>
 
-    <div class="hidden-message" id="message">
-        <h2>Me lähme Celeste Barberi show’le! 😍</h2>
+    <div class="intro-text" id="intro">
+        <h2>Me lähme</h2>
+    </div>
+
+    <div class="full-message" id="message">
+        <h2>Celeste Barberi show’le! 😍</h2>
         <img src="celeste.jpg" alt="Celeste Barber poster">
         <p><strong>📍 Asukoht:</strong> Stockholm Waterfront, Stockholm</p>
         <p><strong>📅 Kuupäev:</strong> Reede, 25. aprill 2025</p>
@@ -97,7 +115,12 @@
 
     <script>
         function showMessage() {
-            document.getElementById("message").style.display = "block";
+            document.getElementById("intro").style.display = "block";
+            setTimeout(function() {
+                var msg = document.getElementById("message");
+                msg.style.display = "block";
+                msg.classList.add("animate");
+            }, 1000);
         }
     </script>
 </body>
