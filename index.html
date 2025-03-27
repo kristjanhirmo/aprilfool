@@ -14,6 +14,30 @@
         }
         h1 {
             color: #b83280;
+            font-size: 2em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: nowrap;
+        }
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            75% {
+                transform: scale(1.1);
+            }
+        }
+        .heartbeat {
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
         }
         .hidden-message {
             display: none;
@@ -51,14 +75,13 @@
     </style>
 </head>
 <body>
-    <h1 style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: nowrap;">
-    <span>💜</span>
-    <span>Hei, Mõmmar!</span>
-    <span>💜</span>
-</h1>
+    <h1>
+        <span class="heartbeat">💜</span>
+        <span>Hei, Mõmmar!</span>
+        <span class="heartbeat">💜</span>
+    </h1>
     <p>Mul on sulle üks väike plaan. Klõpsa allolevale nupule ja saa teada…</p>
     <button class="reveal-btn" onclick="showMessage()">VAJUTA JULGESTI</button>
-</body>
 
     <div class="hidden-message" id="message">
         <h2>Me lähme Celeste Barberi show’le! 😍</h2>
